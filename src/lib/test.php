@@ -2,3 +2,7 @@
 
 $array = array();
 $string = "";
+
+if ($string == "") {
+    echo 'Holla';
+}
