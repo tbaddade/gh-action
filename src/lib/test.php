@@ -1,8 +1,10 @@
 <?php
 
-$array = array();
-$string = "";
+//$array = array();
+//$string = "";
+//
+//if ($string == "") {
+//    echo 'Holla';;
+//}
 
-if ($string == "") {
-    echo 'Holla';
-}
+echo 'Holla';;
