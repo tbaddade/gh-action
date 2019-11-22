@@ -1,0 +1,7 @@
+{
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^7.3"
+    }
+}
