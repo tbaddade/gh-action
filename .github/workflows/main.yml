@@ -21,9 +21,9 @@ jobs:
                     fetch-depth: 1
 
             -   name: PHP-CS-Fixer
-                uses: docker://oskarstark/php-cs-fixer-ga:2.15.4
-                with:
-                    args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
+                uses: docker://oskarstark/php-cs-fixer-ga
+#                with:
+#                    args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
 
             -   name: "Send commit"
                 uses: stefanzweifel/git-auto-commit-action@v2.1.0
