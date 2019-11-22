@@ -9,7 +9,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - name: OSKAR-PHP-CS-Fixer
-      uses: OskarStark/php-cs-fixer-ga@2.15.3
+    - name: PHP-CS-Fixer
+      uses: docker://oskarstark/php-cs-fixer-ga
+      with:
+        args: --diff --dry-run
+
+      #uses: OskarStark/php-cs-fixer-ga@2.15.3
 #        with:
 #          args: --config=.project.php_cs --diff --dry-run
