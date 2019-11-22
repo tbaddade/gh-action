@@ -20,16 +20,23 @@ jobs:
                 with:
                     fetch-depth: 1
 
-            -   name: PHP-CS-Fixer
+            -   name: "PHP-CS-Fixer"
                 uses: docker://oskarstark/php-cs-fixer-ga
-#                with:
-#                    args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
-
-            -   name: "Send commit"
-                uses: stefanzweifel/git-auto-commit-action@v2.1.0
                 with:
-                    commit_message: Apply php-cs-fixer changes
-                    branch: ${{ github.head_ref }}
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
 
+    static-code-analysis:
+        name: "Static Code Analysis"
+
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: "Checkout"
+                uses: actions/checkout@master
+                with:
+                    fetch-depth: 1
+
+            -   name: PHPStan
+                uses: docker://oskarstark/phpstan-ga
+                with:
+                    args: analyse
