@@ -25,3 +25,11 @@ jobs:
         with:
           args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
 
+      - name: "Send commit"
+        uses: stefanzweifel/git-auto-commit-action@v2.1.0
+          with:
+              commit_message: Apply php-cs-fixer changes
+              branch: ${{ github.head_ref }}
+          env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
