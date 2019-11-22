@@ -1,35 +1,35 @@
 name: CI
 
 on:
-  pull_request:
-  push:
-    branches:
-      - master
-    tags:
-      - "**"
+    pull_request:
+    push:
+        branches:
+            - master
+        tags:
+            - "**"
 
 jobs:
-  coding-standards:
-    name: "Coding Standards"
+    coding-standards:
+        name: "Coding Standards"
 
-    runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 1
+        steps:
+            -   name: "Checkout"
+                uses: actions/checkout@master
+                with:
+                    fetch-depth: 1
 
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga:2.15.4
-        with:
-          args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
+            -   name: PHP-CS-Fixer
+                uses: docker://oskarstark/php-cs-fixer-ga:2.15.4
+                with:
+                    args: --diff --diff-format=udiff --using-cache=no --verbose --dry-run
 
-      - name: "Send commit"
-        uses: stefanzweifel/git-auto-commit-action@v2.1.0
-          with:
-              commit_message: Apply php-cs-fixer changes
-              branch: ${{ github.head_ref }}
-          env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            -   name: "Send commit"
+                uses: stefanzweifel/git-auto-commit-action@v2.1.0
+                with:
+                    commit_message: Apply php-cs-fixer changes
+                    branch: ${{ github.head_ref }}
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
