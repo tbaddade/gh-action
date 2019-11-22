@@ -11,8 +11,8 @@ jobs:
     - uses: actions/checkout@master
     - name: PHP-CS-Fixer
       uses: docker://oskarstark/php-cs-fixer-ga
-      with:
-        args: --diff --dry-run
+#      with:
+#        args: --diff --dry-run
 
       #uses: OskarStark/php-cs-fixer-ga@2.15.3
 #        with:
